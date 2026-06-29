@@ -15,7 +15,6 @@ def webhook():
         timestamp = datetime.now(SAST).strftime("%Y-%m-%d %H:%M:%S SAST")
 
         print("Webhook received!")
-        print(data)
 
         with open(OUTPUT_FILE, "a") as f:
             f.write(f"\n{'='*60}\n")
@@ -29,6 +28,3 @@ def webhook():
     except Exception as e:
         print(f"Error: {str(e)}")
         return jsonify({"status": "error"}), 500
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
